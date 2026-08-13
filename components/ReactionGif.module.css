@@ -1,0 +1,19 @@
+.wrap {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  width: 160px;
+  z-index: 50;
+  pointer-events: none;
+  border: 3px solid #30363d;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #0d1117;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+}
+
+.gif {
+  width: 100%;
+  height: auto;
+  display: block;
+}

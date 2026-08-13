@@ -1,0 +1,79 @@
+.screen {
+  min-height: 100vh;
+  background: #0d1117;
+  color: #e6edf3;
+  font-family: "Courier New", Courier, monospace;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.header {
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 1.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #ff3366;
+  margin: 0;
+}
+
+.flavor {
+  color: #8b949e;
+  font-size: 0.8rem;
+  margin: 0.4rem 0 0;
+}
+
+.trackWrap {
+  width: 100%;
+  max-width: 900px;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.entry {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.75rem;
+  border: 2px solid;
+  border-radius: 4px;
+  background: #161b22;
+  font-size: 0.85rem;
+}
+
+.car {
+  width: 20px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+.nextHint {
+  color: #484f58;
+  font-size: 0.75rem;
+}
+
+.backBtn {
+  font-family: inherit;
+  background: transparent;
+  border: 2px solid #484f58;
+  color: #8b949e;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.backBtn:hover {
+  border-color: #8b949e;
+  color: #e6edf3;
+}

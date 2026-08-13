@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "trace-track": "node scripts/traceTrack.mjs",
+    "build-track": "node scripts/buildTrackPath.mjs"
   },
   "dependencies": {
     "next": "16.3.0",

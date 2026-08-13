@@ -1,0 +1,104 @@
+.panel {
+  background: #161b22;
+  border: 2px solid #30363d;
+  border-radius: 4px;
+  padding: 1rem 1.15rem;
+}
+
+.placeholder {
+  margin: 0;
+  color: #6e7681;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  text-align: center;
+  padding: 0.5rem 0;
+}
+
+.header {
+  display: flex;
+  gap: 0.85rem;
+  align-items: center;
+  margin-bottom: 0.85rem;
+}
+
+.name {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.archetype {
+  font-size: 0.72rem;
+  color: #8b949e;
+  letter-spacing: 0.04em;
+}
+
+.traits {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+  margin-bottom: 0.75rem;
+}
+
+@media (max-width: 520px) {
+  .traits {
+    grid-template-columns: 1fr;
+  }
+}
+
+.trait {
+  padding: 0.65rem 0.75rem;
+  border-radius: 4px;
+  border: 1px solid #30363d;
+}
+
+.trait.perk {
+  background: rgba(88, 166, 255, 0.06);
+  border-color: rgba(88, 166, 255, 0.25);
+}
+
+.trait.jerk {
+  background: rgba(248, 81, 73, 0.05);
+  border-color: rgba(248, 81, 73, 0.2);
+}
+
+.traitLabel {
+  display: block;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.trait.perk .traitLabel {
+  color: #58a6ff;
+}
+
+.trait.jerk .traitLabel {
+  color: #f85149;
+}
+
+.traitName {
+  display: block;
+  font-size: 0.85rem;
+  color: #e6edf3;
+  margin-bottom: 0.3rem;
+}
+
+.traitEffect {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: #8b949e;
+}
+
+.playstyle {
+  margin: 0;
+  padding-top: 0.65rem;
+  border-top: 1px solid #21262d;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: #c9d1d9;
+  font-style: italic;
+}

@@ -1,0 +1,196 @@
+.guide {
+  width: 100%;
+}
+
+.guideToggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  background: #161b22;
+  border: 2px solid #30363d;
+  border-radius: 4px;
+  color: #e6edf3;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.guideToggle:hover {
+  border-color: #484f58;
+}
+
+.guideToggleLabel {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.guideToggleHint {
+  font-size: 0.68rem;
+  color: #6e7681;
+}
+
+.guideBody {
+  margin-top: 0.5rem;
+  border: 2px solid #30363d;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #0d1117;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #21262d;
+  background: #161b22;
+}
+
+.tab {
+  flex: 1;
+  padding: 0.55rem 0.5rem;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: #6e7681;
+  font-family: inherit;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-bottom: -1px;
+}
+
+.tab:hover {
+  color: #8b949e;
+}
+
+.tabActive {
+  color: #58a6ff;
+  border-bottom-color: #58a6ff;
+  background: rgba(88, 166, 255, 0.05);
+}
+
+.tabPanel {
+  padding: 0.85rem 1rem;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.listItem {
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #21262d;
+}
+
+.listItem:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.itemTitle {
+  display: block;
+  font-size: 0.78rem;
+  color: #e6edf3;
+  margin-bottom: 0.25rem;
+}
+
+.itemBody {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: #8b949e;
+}
+
+.tyrePanel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.tyreCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .tyreCards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tyreCard {
+  padding: 0.65rem;
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.tyreIcon {
+  width: 28px;
+  height: 28px;
+  image-rendering: pixelated;
+}
+
+.tyreName {
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.tyreTag {
+  font-size: 0.62rem;
+  color: #6e7681;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.25rem;
+}
+
+.tyrePros,
+.tyreCons {
+  margin: 0;
+  font-size: 0.68rem;
+  line-height: 1.45;
+  color: #8b949e;
+}
+
+.tyreTagLabel {
+  display: block;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.15rem;
+}
+
+.tyrePros .tyreTagLabel {
+  color: #3fb950;
+}
+
+.tyreCons .tyreTagLabel {
+  color: #f85149;
+}
+
+.wearTip {
+  margin: 0;
+  padding: 0.55rem 0.65rem;
+  background: rgba(210, 153, 34, 0.08);
+  border: 1px solid rgba(210, 153, 34, 0.25);
+  border-radius: 4px;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  color: #d29922;
+}

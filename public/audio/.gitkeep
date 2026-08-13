@@ -1,0 +1,11 @@
+# Required audio files (update lib/audioPaths.js if your names differ):
+#
+# public/audio/menu-loop.mp3
+# public/audio/race-loop.mp3
+#
+# public/audio/sfx/light-beep.mp3
+# public/audio/sfx/lights-out.mp3
+# public/audio/sfx/pit-stop.mp3
+# public/audio/sfx/dnf.mp3
+# public/audio/sfx/overtake.mp3
+# public/audio/sfx/podium.mp3

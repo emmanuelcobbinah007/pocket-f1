@@ -1,0 +1,372 @@
+.screen {
+  height: 100vh;
+  max-height: 100dvh;
+  background: #0a0c10;
+  color: #e6edf3;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: minmax(300px, 44%) 1fr;
+  flex: 1;
+  min-height: 0;
+  gap: 1px;
+  background: #21262d;
+}
+
+/* ── Left: leaderboard ── */
+.leftCol {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: #0d1117;
+}
+
+.lbHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 0.6rem 0.85rem;
+  background: #161b22;
+  border-bottom: 1px solid #21262d;
+  flex-shrink: 0;
+}
+
+.lbTitle {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #e6edf3;
+}
+
+.lbSub {
+  font-size: 0.62rem;
+  color: #484f58;
+  letter-spacing: 0.06em;
+}
+
+.lbScroll {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.leaderboard {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+}
+
+.leaderboard th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  text-align: left;
+  padding: 0.45rem 0.65rem;
+  background: #161b22;
+  color: #6e7681;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-bottom: 1px solid #21262d;
+}
+
+.leaderboard td {
+  padding: 0.5rem 0.65rem;
+  border-bottom: 1px solid #161b22;
+  vertical-align: middle;
+}
+
+.leaderboard tbody tr:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.leaderRow {
+  background: rgba(255, 51, 102, 0.06);
+}
+
+.humanRow {
+  box-shadow: inset 3px 0 0 #58a6ff;
+}
+
+.pos {
+  color: #8b949e;
+  font-weight: 700;
+  width: 2rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.driverCell {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.driverBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.1rem;
+  padding: 0.15rem 0.35rem;
+  border-radius: 2px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #0d1117;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+
+.driverName {
+  font-weight: 600;
+  color: #e6edf3;
+  font-size: 0.75rem;
+}
+
+.statusPit {
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #fff;
+  background: #da3633;
+  padding: 0.1rem 0.35rem;
+  border-radius: 2px;
+}
+
+.statusOut {
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #8b949e;
+  background: #21262d;
+  padding: 0.1rem 0.35rem;
+  border-radius: 2px;
+}
+
+.gap {
+  color: #58a6ff;
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.tire {
+  font-weight: 700;
+  color: #d29922;
+  text-align: center;
+}
+
+.wear {
+  color: #8b949e;
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Right: track + chat ── */
+.rightCol {
+  display: grid;
+  grid-template-rows: 1fr minmax(130px, 32%);
+  min-height: 0;
+  background: #0d1117;
+  gap: 1px;
+}
+
+.trackPanel {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: #0d1117;
+  flex: 1;
+}
+
+.trackArea {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+  padding: 0.35rem;
+  background: #0a0c10;
+  position: relative;
+}
+
+.lapOverlay {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.65rem;
+  z-index: 2;
+  display: flex;
+  align-items: baseline;
+  gap: 0.2rem;
+  background: rgba(13, 17, 23, 0.88);
+  border: 2px solid #30363d;
+  border-radius: 4px;
+  padding: 0.35rem 0.65rem;
+  pointer-events: none;
+}
+
+.lapOverlayLabel {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #6e7681;
+  margin-right: 0.15rem;
+}
+
+.lapOverlayNum {
+  font-size: 1.75rem;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.lapOverlayTotal {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #8b949e;
+  font-variant-numeric: tabular-nums;
+}
+
+.scOverlay,
+.chequeredOverlay {
+  position: absolute;
+  top: 0.65rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  padding: 0.35rem 0.75rem;
+  border-radius: 3px;
+  pointer-events: none;
+  animation: blink 0.8s step-end infinite;
+}
+
+.scOverlay {
+  background: rgba(158, 106, 3, 0.92);
+  color: #fff;
+}
+
+.chequeredOverlay {
+  background: rgba(48, 54, 61, 0.95);
+  color: #fff;
+}
+
+.trackArea > :last-child {
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+}
+
+/* ── Status bar ── */
+.statusBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.45rem 0.85rem;
+  background: #161b22;
+  border-top: 1px solid #21262d;
+  flex-shrink: 0;
+  gap: 1rem;
+}
+
+.statusLeft,
+.statusRight {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.statusRight {
+  justify-content: flex-end;
+}
+
+.statusCenter {
+  flex-shrink: 0;
+}
+
+.eventName {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #e6edf3;
+}
+
+.lapInfo {
+  font-size: 0.68rem;
+  color: #8b949e;
+  font-variant-numeric: tabular-nums;
+}
+
+.footerLap {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #e6edf3;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.trackStatusClear {
+  display: inline-block;
+  background: #238636;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.85rem;
+  border-radius: 2px;
+}
+
+.trackStatusSc {
+  display: inline-block;
+  background: #9e6a03;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.85rem;
+  border-radius: 2px;
+  animation: blink 0.8s step-end infinite;
+}
+
+.trackStatusDone {
+  display: inline-block;
+  background: #30363d;
+  color: #e6edf3;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.85rem;
+  border-radius: 2px;
+}
+
+@media (max-width: 800px) {
+  .main {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  .leftCol {
+    max-height: 35vh;
+  }
+
+  .rightCol {
+    grid-template-rows: 1fr minmax(120px, 25%);
+  }
+}

@@ -1,0 +1,40 @@
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: inherit;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+  cursor: pointer;
+  border: 1px solid #30363d;
+  background: #161b22;
+  color: #8b949e;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.toggle:hover {
+  border-color: #484f58;
+  color: #e6edf3;
+}
+
+.on {
+  border-color: rgba(68, 238, 136, 0.35);
+  color: #44ee88;
+}
+
+.off {
+  border-color: rgba(255, 51, 102, 0.25);
+  color: #8b949e;
+}
+
+.icon {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.label {
+  font-weight: 600;
+}

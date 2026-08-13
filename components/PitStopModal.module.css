@@ -1,0 +1,78 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal {
+  background: #161b22;
+  border: 3px solid #ff3366;
+  border-radius: 4px;
+  padding: 1.5rem;
+  font-family: "Courier New", Courier, monospace;
+  color: #e6edf3;
+  text-align: center;
+  min-width: 280px;
+}
+
+.modal h2 {
+  color: #ff3366;
+  margin: 0 0 0.5rem;
+  letter-spacing: 0.1em;
+}
+
+.modal p {
+  color: #8b949e;
+  font-size: 0.85rem;
+  margin: 0 0 1rem;
+}
+
+.btns {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.btn {
+  font-family: inherit;
+  background: #21262d;
+  border: 2px solid #484f58;
+  color: #e6edf3;
+  border-radius: 4px;
+  padding: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.7rem;
+  min-width: 72px;
+}
+
+.btn:hover {
+  border-color: #ff3366;
+}
+
+.icon {
+  width: 36px;
+  height: 36px;
+  image-rendering: pixelated;
+}
+
+.cancel {
+  font-family: inherit;
+  background: transparent;
+  border: none;
+  color: #8b949e;
+  cursor: pointer;
+  font-size: 0.75rem;
+}
+
+.cancel:hover {
+  color: #e6edf3;
+}

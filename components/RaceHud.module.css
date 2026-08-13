@@ -1,0 +1,295 @@
+.hud {
+  flex-shrink: 0;
+  padding: 0.85rem;
+  background: linear-gradient(180deg, #161b22 0%, #0d1117 100%);
+  border-bottom: 2px solid #30363d;
+}
+
+.topRow {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+}
+
+.driverInfo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.nameRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.driverName {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.posBadge {
+  background: #ff3366;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0.15rem 0.45rem;
+  border-radius: 2px;
+  letter-spacing: 0.06em;
+}
+
+.gapLabel {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #58a6ff;
+  font-variant-numeric: tabular-nums;
+}
+
+.lapBlock {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  margin-top: 0.35rem;
+}
+
+.lapLabel {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: #6e7681;
+}
+
+.lapNumbers {
+  display: flex;
+  align-items: baseline;
+  gap: 0.15rem;
+  line-height: 1;
+}
+
+.lapCurrent {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+}
+
+.lapSep {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #484f58;
+}
+
+.lapTotal {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #8b949e;
+  font-variant-numeric: tabular-nums;
+}
+
+.progressBlock {
+  margin-top: 0.75rem;
+}
+
+.progressHeader {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6e7681;
+  margin-bottom: 0.3rem;
+}
+
+.progressTrack,
+.wearTrack {
+  height: 8px;
+  background: #21262d;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid #30363d;
+}
+
+.progressFill,
+.wearFill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.25s ease;
+}
+
+.tireBlock {
+  display: flex;
+  gap: 0.65rem;
+  align-items: center;
+  margin-top: 0.75rem;
+  padding: 0.55rem 0.65rem;
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 4px;
+}
+
+.tireIcon {
+  width: 36px;
+  height: 36px;
+  image-rendering: pixelated;
+  flex-shrink: 0;
+}
+
+.tireDetails {
+  flex: 1;
+  min-width: 0;
+}
+
+.tireHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.35rem;
+}
+
+.tireCompound {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #e6edf3;
+}
+
+.tireWear {
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.cliffWarn {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #f85149;
+  text-transform: uppercase;
+}
+
+.statusRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.65rem;
+  min-height: 1.4rem;
+}
+
+.chipOk,
+.chipOut,
+.chipPit,
+.chipSpin,
+.chipBoost,
+.chipSc,
+.chipDone {
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  padding: 0.2rem 0.45rem;
+  border-radius: 2px;
+}
+
+.chipOk {
+  background: #21262d;
+  color: #3fb950;
+}
+
+.chipOut {
+  background: #21262d;
+  color: #8b949e;
+}
+
+.chipPit {
+  background: #da3633;
+  color: #fff;
+  animation: blink 0.8s step-end infinite;
+}
+
+.chipSpin {
+  background: #9e6a03;
+  color: #fff;
+}
+
+.chipBoost {
+  background: #1f6feb;
+  color: #fff;
+}
+
+.chipSc {
+  background: #9e6a03;
+  color: #fff;
+  animation: blink 0.8s step-end infinite;
+}
+
+.chipDone {
+  background: #238636;
+  color: #fff;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.45;
+  }
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-top: 0.85rem;
+}
+
+.pitBtn {
+  font-family: inherit;
+  background: #ffcc00;
+  color: #0d1117;
+  border: none;
+  padding: 0.85rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  box-shadow: 0 0 0 2px rgba(255, 204, 0, 0.25);
+  transition: filter 0.15s, transform 0.1s;
+}
+
+.pitBtn:hover:not(:disabled) {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+
+.pitBtn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.pitBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.quitBtn {
+  font-family: inherit;
+  background: transparent;
+  border: 1px solid #484f58;
+  color: #8b949e;
+  padding: 0.45rem 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.quitBtn:hover {
+  border-color: #8b949e;
+  color: #e6edf3;
+}
