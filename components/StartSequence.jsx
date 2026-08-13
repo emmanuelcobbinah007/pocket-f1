@@ -2,9 +2,9 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useGame, useGameActions } from "./GameProvider";
-import { getDriverById } from "@/lib/drivers";
+import { getDriverById, getReactionAdjustMs } from "@/lib/drivers";
 import { TIRES } from "@/lib/tires";
-import { allTiresPicked } from "@/lib/gameState";
+import { allTiresPicked, getLobbyPlayers } from "@/lib/gameState";
 import {
   rollAiTireCompound,
   rollAiReactionMs,
@@ -13,7 +13,6 @@ import {
   LIGHT_INTERVAL_MS,
   LIGHT_COUNT,
 } from "@/lib/startSequence";
-import { ROOKIE_REACTION_BONUS_MS } from "@/lib/constants";
 import { playSfx } from "@/lib/audio";
 import { getTrack } from "@/lib/tracks";
 import { getGridProgress } from "@/lib/trackPath";
@@ -39,7 +38,7 @@ export default function StartSequence() {
   const [jumpStarts, setJumpStarts] = useState(/** @type {Record<number, boolean>} */ ({}));
   const [humanReacted, setHumanReacted] = useState(false);
 
-  const activePlayers = state.players.filter((p) => p.driverId);
+  const activePlayers = getLobbyPlayers(state).filter((p) => p.driverId);
   const track = getTrack(state.raceSettings.trackId);
   const humanPlayer = activePlayers.find((p) => p.type === "human");
   const lightsOutAtRef = useRef(/** @type {number | null} */ (null));
@@ -128,9 +127,7 @@ export default function StartSequence() {
     }
 
     let ms = now - outAt;
-    if (human.driverId === "spark") {
-      ms = Math.max(0, ms - ROOKIE_REACTION_BONUS_MS);
-    }
+    ms = Math.max(0, ms + getReactionAdjustMs(getDriverById(human.driverId)));
 
     setReactions((prev) => ({ ...prev, [human.slot]: ms }));
     setHumanReacted(true);

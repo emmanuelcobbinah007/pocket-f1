@@ -55,4 +55,8 @@ const PLAYSTYLE = {
   steel: "Tyre whisperer — slower outright but stays consistent while others fall off the cliff. Strong one-stop strategy.",
   joker: "Chaos agent — DRS mini-games are easier and spins are more likely. Perfect if you like drama and comebacks.",
   spark: "Starts matter — bonus reaction time off the line, but pit crew can fumble. Great for human players who nail lights out.",
+  vector: "Mr. Consistency — cheap pits and calm racecraft. Slightly slow off the line, but strategy pays off over a longer race.",
+  brick: "Moving chicane — hard to pass, not the fastest. Ideal AI blocker or human who defends P1 with Iron Wall.",
+  blaze: "Highlight reel — bigger overtake windows and front-row pace, but may lose time showboating after a pass.",
+  patch: "Comeback kid — faster the further back he runs, if the car holds together. High DNF risk keeps it spicy.",
 };

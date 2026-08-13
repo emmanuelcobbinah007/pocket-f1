@@ -2,7 +2,7 @@ import "./globals.css";
 
 export const metadata = {
   title: "Pocket F1",
-  description: "A miniature party-style F1 racing game for up to 4 players.",
+  description: "A miniature party-style F1 racing game for 4–8 drivers.",
 };
 
 export const viewport = {

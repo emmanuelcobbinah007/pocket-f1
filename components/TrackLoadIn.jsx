@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { useGame, useGameActions } from "./GameProvider";
+import { getLobbyPlayers } from "@/lib/gameState";
 import { getDriverById } from "@/lib/drivers";
 import { getTrack } from "@/lib/tracks";
 import { getGridProgress } from "@/lib/trackPath";
@@ -21,7 +22,7 @@ export default function TrackLoadIn() {
 
   const track = getTrack(state.raceSettings.trackId);
   const { totalLaps } = state.raceSettings;
-  const activeDrivers = [...state.players]
+  const activeDrivers = getLobbyPlayers(state)
     .filter((p) => p.driverId)
     .sort((a, b) => a.slot - b.slot);
 

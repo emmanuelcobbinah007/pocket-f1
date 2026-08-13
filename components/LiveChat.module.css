@@ -33,6 +33,15 @@
   text-transform: none;
   font-weight: 700;
   white-space: nowrap;
+  transition: color 0.35s ease;
+}
+
+.viewerUp {
+  color: #56d364;
+}
+
+.viewerDown {
+  color: #8b949e;
 }
 
 .list {

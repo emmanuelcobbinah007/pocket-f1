@@ -1,19 +1,22 @@
 "use client";
 
 import { useCallback, useRef, useState } from "react";
-import { POCKET_RING, HARBOR_LOOP } from "@/lib/tracks";
+import { POCKET_RING, HARBOR_LOOP, SUMMIT_SWITCH } from "@/lib/tracks";
 import { buildSvgPath } from "@/lib/trackPath";
 import styles from "./page.module.css";
 
-const EDITOR_TRACKS = [POCKET_RING, HARBOR_LOOP];
+const EDITOR_TRACKS = [POCKET_RING, HARBOR_LOOP, SUMMIT_SWITCH];
 
 export default function TrackEditorPage() {
-  const [trackId, setTrackId] = useState(HARBOR_LOOP.id);
+  const [trackId, setTrackId] = useState(SUMMIT_SWITCH.id);
   const track =
-    EDITOR_TRACKS.find((t) => t.id === trackId) ?? HARBOR_LOOP;
+    EDITOR_TRACKS.find((t) => t.id === trackId) ?? SUMMIT_SWITCH;
   const { viewBox, backgroundUrl, name } = track;
   const { width, height } = viewBox;
-  const trackKey = track.id === HARBOR_LOOP.id ? "HARBOR_LOOP" : "POCKET_RING";
+  const trackKey = track.id
+    .split("-")
+    .map((part) => part.toUpperCase())
+    .join("_");
 
   const overlayRef = useRef(null);
   const [points, setPoints] = useState([]);
@@ -86,6 +89,9 @@ export default function TrackEditorPage() {
               onClick={() => switchTrack(t.id)}
             >
               {t.name}
+              {t.available === false && (
+                <span className={styles.trackBtnTag}>trace me</span>
+              )}
             </button>
           ))}
         </div>
@@ -108,16 +114,17 @@ export default function TrackEditorPage() {
 
       <div
         className={styles.canvasWrap}
-        style={{ aspectRatio: `${width} / ${height}`, maxWidth: width }}
+        style={{ aspectRatio: `${width} / ${height}` }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={backgroundUrl}
           alt={`${name} track map`}
-          width={width}
-          height={height}
           className={styles.trackImg}
           draggable={false}
+          onError={(e) => {
+            console.warn("Track image failed to load:", backgroundUrl);
+          }}
         />
         <svg
           ref={overlayRef}

@@ -7,7 +7,7 @@ import { getTrack } from "@/lib/tracks";
 import { getDriverById } from "@/lib/drivers";
 import { getGapSeconds } from "@/lib/raceEngine";
 import { TIRES } from "@/lib/tires";
-import { TICK_INTERVAL_MS } from "@/lib/constants";
+import { TICK_INTERVAL_MS, getMaxPitStops } from "@/lib/constants";
 import { playSfx } from "@/lib/audio";
 import TrackView from "./TrackView";
 import LiveChat from "./LiveChat";
@@ -62,6 +62,7 @@ export default function RaceScreen() {
   if (!state.race) return null;
 
   const totalLaps = state.race.totalLaps;
+  const maxPitStops = getMaxPitStops(totalLaps);
   const track = getTrack(state.race.trackId);
   const board = getLeaderboard(state);
   const leader = board[0];
@@ -123,6 +124,7 @@ export default function RaceScreen() {
               <LiveChat
                 className={styles.chatFill}
                 messages={state.race.chatLog ?? []}
+                viewerCount={state.race.viewerCount}
               />
             </div>
           </div>
@@ -144,10 +146,13 @@ export default function RaceScreen() {
                 safetyCar={state.race.safetyCar}
                 finished={state.race.finished}
                 totalLaps={totalLaps}
+                pitStopsUsed={humanDriver.pitCount ?? 0}
+                maxPitStops={maxPitStops}
                 canPit={
                   !humanDriver.dnf &&
                   humanDriver.lap < totalLaps &&
-                  !state.race.finished
+                  !state.race.finished &&
+                  (humanDriver.pitCount ?? 0) < maxPitStops
                 }
                 onPit={() =>
                   dispatch({
@@ -227,6 +232,7 @@ export default function RaceScreen() {
           <LiveChat
             className={styles.chatFill}
             messages={state.race.chatLog ?? []}
+            viewerCount={state.race.viewerCount}
           />
         </div>
       </div>

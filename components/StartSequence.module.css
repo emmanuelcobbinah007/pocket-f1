@@ -507,7 +507,7 @@
   }
 
   .leftScroll {
-    max-height: 38vh;
+    max-height: min(42vh, 420px);
   }
 
   .playerRow {

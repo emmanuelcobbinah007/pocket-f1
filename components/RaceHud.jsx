@@ -21,6 +21,8 @@ import styles from "./RaceHud.module.css";
  *   safetyCar: boolean,
  *   finished: boolean,
  *   totalLaps: number,
+ *   pitStopsUsed?: number,
+ *   maxPitStops?: number,
  *   canPit: boolean,
  *   onPit: () => void,
  *   onQuit: () => void,
@@ -41,6 +43,8 @@ export default function RaceHud({
   safetyCar,
   finished,
   totalLaps,
+  pitStopsUsed = 0,
+  maxPitStops = 2,
   canPit,
   onPit,
   onQuit,
@@ -57,7 +61,9 @@ export default function RaceHud({
   return (
     <div className={styles.hud}>
       <div className={styles.topRow}>
-        <DriverPortrait driverId={driverId} size="lg" />
+        <div className={styles.avatarSlot}>
+          <DriverPortrait driverId={driverId} size="lg" />
+        </div>
 
         <div className={styles.driverInfo}>
           <div className={styles.nameRow}>
@@ -103,7 +109,7 @@ export default function RaceHud({
           <div className={styles.tireHeader}>
             <span className={styles.tireCompound}>{tireInfo.label}</span>
             <span className={styles.tireWear} style={{ color: wearColor }}>
-              {wearPct}% wear
+              {wearPct}% wear · {pitStopsUsed}/{maxPitStops} pits
             </span>
           </div>
           <div className={styles.wearTrack}>
@@ -131,6 +137,9 @@ export default function RaceHud({
       </div>
 
       <div className={styles.controls}>
+        {!canPit && !dnf && !finished && pitStopsUsed >= maxPitStops && (
+          <span className={styles.chipOut}>Pit limit reached</span>
+        )}
         {canPit && (
           <button
             type="button"

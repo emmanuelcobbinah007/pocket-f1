@@ -25,6 +25,7 @@ import {
   readyAllPlayers,
   setRaceTrack,
   setRaceLaps,
+  setPlayerCount,
   toggleSound,
   resetToLobby,
   GAME_PHASES,
@@ -83,6 +84,8 @@ function gameReducer(state, action) {
       return setRaceTrack(state, action.payload.trackId);
     case "SET_LAPS":
       return setRaceLaps(state, action.payload.totalLaps);
+    case "SET_PLAYER_COUNT":
+      return setPlayerCount(state, action.payload.playerCount);
     case "TOGGLE_SOUND":
       return toggleSound(state);
     case "RESET":
@@ -165,6 +168,12 @@ export function useGameActions() {
     [dispatch]
   );
 
+  const setPlayerCountAction = useCallback(
+    (playerCount) =>
+      dispatch({ type: "SET_PLAYER_COUNT", payload: { playerCount } }),
+    [dispatch]
+  );
+
   const toggleSoundAction = useCallback(async () => {
     const turningOn = !state.soundEnabled;
     dispatch({ type: "TOGGLE_SOUND" });
@@ -182,6 +191,7 @@ export function useGameActions() {
     reset,
     setTrack,
     setLaps,
+    setPlayerCount: setPlayerCountAction,
     toggleSound: toggleSoundAction,
     canStart: canStartRace(state),
   };
