@@ -5,6 +5,12 @@ export const metadata = {
   description: "A miniature party-style F1 racing game for up to 4 players.",
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">

@@ -90,119 +90,144 @@ export default function RaceScreen() {
   return (
     <div className={styles.screen}>
       <div className={styles.main}>
-        <aside className={styles.leftCol}>
-          {humanPlayer?.driverId && humanDriver && (
-            <RaceHud
-              driverId={humanPlayer.driverId}
-              racePosition={humanRacePos ?? "—"}
-              gapLabel={humanGap}
-              lap={state.race.lap}
-              lapProgress={humanDriver.position}
-              tire={humanDriver.tire}
-              wear={humanDriver.wear}
-              pitting={humanDriver.pitting}
-              dnf={humanDriver.dnf}
-              spinning={humanSpinning}
-              boosting={humanBoosting}
-              safetyCar={state.race.safetyCar}
-              finished={state.race.finished}
-              totalLaps={totalLaps}
-              canPit={
-                !humanDriver.dnf &&
-                humanDriver.lap < totalLaps &&
-                !state.race.finished
-              }
-              onPit={() =>
-                dispatch({
-                  type: "PIT_REQUEST",
-                  payload: { slot: humanPlayer.slot },
-                })
-              }
-              onQuit={reset}
-            />
-          )}
-
-          <div className={styles.lbHeader}>
-            <span className={styles.lbTitle}>Leaderboard</span>
-          </div>
-          <div className={styles.lbScroll}>
-            <table className={styles.leaderboard}>
-              <thead>
-                <tr>
-                  <th>Pos</th>
-                  <th>Driver</th>
-                  <th>Gap</th>
-                  <th>Tyre</th>
-                  <th>Wear</th>
-                </tr>
-              </thead>
-              <tbody>
-                {board.map((d, i) => {
-                  const driver = getDriverById(d.driverId);
-                  const gap =
-                    i === 0 ? "—" : getGapSeconds(d, leader) ?? "—";
-                  const wearPct = Math.round(d.wear * 100);
-                  const isHuman = d.driverId === humanPlayer?.driverId;
-                  return (
-                    <tr
-                      key={d.driverId}
-                      className={`${i === 0 ? styles.leaderRow : ""} ${isHuman ? styles.humanRow : ""}`}
-                    >
-                      <td className={styles.pos}>{i + 1}</td>
-                      <td className={styles.driverCell}>
-                        <span
-                          className={styles.driverBadge}
-                          style={{ backgroundColor: driver?.color }}
-                        >
-                          {driver ? driverCode(driver.name) : "???"}
-                        </span>
-                        <span className={styles.driverName}>{driver?.name}</span>
-                        {d.pitting && (
-                          <span className={styles.statusPit}>IN PIT</span>
-                        )}
-                        {d.dnf && (
-                          <span className={styles.statusOut}>OUT</span>
-                        )}
-                      </td>
-                      <td className={styles.gap}>{i === 0 ? "LEADER" : gap}</td>
-                      <td className={styles.tire}>{TIRES[d.tire].label[0]}</td>
-                      <td className={styles.wear}>{wearPct}%</td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-        </aside>
-
-        <div className={styles.rightCol}>
-          <div className={styles.trackPanel}>
-            <div className={styles.trackArea}>
-              <div className={styles.lapOverlay}>
-                <span className={styles.lapOverlayLabel}>LAP</span>
-                <span className={styles.lapOverlayNum}>{state.race.lap}</span>
-                <span className={styles.lapOverlayTotal}>/{totalLaps}</span>
+        <div className={styles.mobileStack}>
+          <div className={styles.rightCol}>
+            <div className={styles.trackPanel}>
+              <div className={styles.trackArea}>
+                <div className={styles.lapOverlay}>
+                  <span className={styles.lapOverlayLabel}>LAP</span>
+                  <span className={styles.lapOverlayNum}>{state.race.lap}</span>
+                  <span className={styles.lapOverlayTotal}>/{totalLaps}</span>
+                </div>
+                {state.race.safetyCar && (
+                  <div className={styles.scOverlay}>SAFETY CAR</div>
+                )}
+                {state.race.finished && (
+                  <div className={styles.chequeredOverlay}>CHEQUERED</div>
+                )}
+                <ReactionGif src={state.race.activeFlash?.gif ?? null} />
+                <div className={styles.trackSizer}>
+                  <TrackView
+                    trackId={state.race.trackId}
+                    drivers={board.map((d) => ({
+                      driverId: d.driverId,
+                      position: d.position,
+                      lap: d.lap,
+                    }))}
+                  />
+                </div>
               </div>
-              {state.race.safetyCar && (
-                <div className={styles.scOverlay}>SAFETY CAR</div>
-              )}
-              {state.race.finished && (
-                <div className={styles.chequeredOverlay}>CHEQUERED</div>
-              )}
-              <ReactionGif src={state.race.activeFlash?.gif ?? null} />
-              <TrackView
-                trackId={state.race.trackId}
-                drivers={board.map((d) => ({
-                  driverId: d.driverId,
-                  position: d.position,
-                  lap: d.lap,
-                }))}
-                carSize={150}
+            </div>
+
+            <div className={styles.chatPanelDesktop}>
+              <LiveChat
+                className={styles.chatFill}
+                messages={state.race.chatLog ?? []}
               />
             </div>
           </div>
 
-          <LiveChat messages={state.race.chatLog ?? []} />
+          <aside className={styles.leftCol}>
+            {humanPlayer?.driverId && humanDriver && (
+              <RaceHud
+                driverId={humanPlayer.driverId}
+                racePosition={humanRacePos ?? "—"}
+                gapLabel={humanGap}
+                lap={state.race.lap}
+                lapProgress={humanDriver.position}
+                tire={humanDriver.tire}
+                wear={humanDriver.wear}
+                pitting={humanDriver.pitting}
+                dnf={humanDriver.dnf}
+                spinning={humanSpinning}
+                boosting={humanBoosting}
+                safetyCar={state.race.safetyCar}
+                finished={state.race.finished}
+                totalLaps={totalLaps}
+                canPit={
+                  !humanDriver.dnf &&
+                  humanDriver.lap < totalLaps &&
+                  !state.race.finished
+                }
+                onPit={() =>
+                  dispatch({
+                    type: "PIT_REQUEST",
+                    payload: { slot: humanPlayer.slot },
+                  })
+                }
+                onQuit={reset}
+              />
+            )}
+
+            <details className={styles.lbFold} open>
+            <summary className={styles.foldSummary}>
+              Leaderboard · {board.length} drivers
+            </summary>
+            <div className={styles.lbScroll}>
+              <table className={styles.leaderboard}>
+                <thead>
+                  <tr>
+                    <th>Pos</th>
+                    <th>Driver</th>
+                    <th className={styles.colGap}>Gap</th>
+                    <th className={styles.colTire}>Tyre</th>
+                    <th className={styles.colWear}>Wear</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {board.map((d, i) => {
+                    const driver = getDriverById(d.driverId);
+                    const gap =
+                      i === 0 ? "—" : getGapSeconds(d, leader) ?? "—";
+                    const wearPct = Math.round(d.wear * 100);
+                    const isHuman = d.driverId === humanPlayer?.driverId;
+                    return (
+                      <tr
+                        key={d.driverId}
+                        className={`${i === 0 ? styles.leaderRow : ""} ${isHuman ? styles.humanRow : ""}`}
+                      >
+                        <td className={styles.pos}>{i + 1}</td>
+                        <td className={styles.driverCell}>
+                          <span
+                            className={styles.driverBadge}
+                            style={{ backgroundColor: driver?.color }}
+                          >
+                            {driver ? driverCode(driver.name) : "???"}
+                          </span>
+                          <span className={styles.driverName}>
+                            {driver?.name}
+                          </span>
+                          {d.pitting && (
+                            <span className={styles.statusPit}>PIT</span>
+                          )}
+                          {d.dnf && (
+                            <span className={styles.statusOut}>OUT</span>
+                          )}
+                        </td>
+                        <td className={`${styles.gap} ${styles.colGap}`}>
+                          {i === 0 ? "LEAD" : gap}
+                        </td>
+                        <td className={`${styles.tire} ${styles.colTire}`}>
+                          {TIRES[d.tire].label[0]}
+                        </td>
+                        <td className={`${styles.wear} ${styles.colWear}`}>
+                          {wearPct}%
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </details>
+        </aside>
+        </div>
+
+        <div className={styles.chatPanelMobile}>
+          <LiveChat
+            className={styles.chatFill}
+            messages={state.race.chatLog ?? []}
+          />
         </div>
       </div>
 

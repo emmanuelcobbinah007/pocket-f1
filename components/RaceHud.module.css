@@ -293,3 +293,60 @@
   border-color: #8b949e;
   color: #e6edf3;
 }
+
+@media (max-width: 768px) {
+  .hud {
+    padding: 0.55rem 0.65rem;
+  }
+
+  .topRow {
+    gap: 0.55rem;
+  }
+
+  .driverName {
+    font-size: 0.95rem;
+  }
+
+  .lapBlock {
+    display: none;
+  }
+
+  .progressBlock {
+    margin-top: 0.45rem;
+  }
+
+  .progressHeader {
+    font-size: 0.58rem;
+  }
+
+  .tireBlock {
+    margin-top: 0.45rem;
+    padding: 0.4rem 0.5rem;
+  }
+
+  .tireIcon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .statusRow {
+    margin-top: 0.4rem;
+  }
+
+  .controls {
+    flex-direction: row;
+    margin-top: 0.55rem;
+    gap: 0.35rem;
+  }
+
+  .pitBtn {
+    flex: 1;
+    padding: 0.65rem 0.5rem;
+    font-size: 0.78rem;
+  }
+
+  .quitBtn {
+    flex-shrink: 0;
+    padding: 0.65rem 0.5rem;
+  }
+}

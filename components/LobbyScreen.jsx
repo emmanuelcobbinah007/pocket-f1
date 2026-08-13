@@ -196,6 +196,7 @@ export default function LobbyScreen() {
                 <div className={styles.driverInfo}>
                   <strong className={styles.driverName}>{driver.name}</strong>
                   <span className={styles.archetype}>{driver.archetype}</span>
+                  <span className={styles.traitsCompact}>{driver.perk.label}</span>
                   <div className={styles.traits}>
                     <span className={styles.perk}>
                       <span className={styles.traitTag}>Perk</span>

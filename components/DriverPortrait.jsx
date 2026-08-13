@@ -5,7 +5,7 @@ import { getDriverById } from "@/lib/drivers";
 import styles from "./DriverPortrait.module.css";
 
 /**
- * Portrait placeholder — colored block until sprite PNG is available.
+ * Portrait placeholder — colored block until sprite WebP is available.
  * @param {{ driverId: string, size?: 'sm' | 'md' | 'lg' }} props
  */
 export default function DriverPortrait({ driverId, size = "md" }) {

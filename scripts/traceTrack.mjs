@@ -1,19 +1,18 @@
 /**
- * Traces track centerline from pocket_ring.png.
+ * Traces track centerline from pocket_ring.webp.
  * Run: node scripts/traceTrack.mjs
  */
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { PNG } from "pngjs";
+import { loadRaster } from "./loadRaster.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const png = PNG.sync.read(
-  fs.readFileSync(path.join(__dirname, "../public/tracks/pocket_ring.png"))
+const { width, height, data } = await loadRaster(
+  path.join(__dirname, "../public/tracks/pocket_ring.webp")
 );
-const { width, height, data } = png;
 
-/** Both asphalt teals + lane surface in pocket_ring.png */
+/** Both asphalt teals + lane surface in pocket_ring.webp */
 function isTrack(r, g, b) {
   if (g > 128 && b < 70) return false;
   if (r > 180 || g > 180) return false;

@@ -1,13 +1,11 @@
-import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { PNG } from "pngjs";
+import { loadRaster } from "./loadRaster.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const png = PNG.sync.read(
-  fs.readFileSync(path.join(__dirname, "../public/tracks/pocket_ring.png"))
+const { width, data } = await loadRaster(
+  path.join(__dirname, "../public/tracks/pocket_ring.webp")
 );
-const { width, data } = png;
 
 function px(x, y) {
   const i = (width * y + x) << 2;

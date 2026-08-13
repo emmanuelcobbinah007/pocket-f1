@@ -1,14 +1,13 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { PNG } from "pngjs";
+import { loadRaster } from "./loadRaster.mjs";
 import { WAYPOINTS, getPositionOnTrack } from "../lib/trackPath.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const png = PNG.sync.read(
-  fs.readFileSync(path.join(__dirname, "../public/tracks/pocket_ring.png"))
+const { width, height, data } = await loadRaster(
+  path.join(__dirname, "../public/tracks/pocket_ring.webp")
 );
-const { width, height } = png;
 
 function isTrack(r, g, b) {
   if (g > 128 && b < 70) return false;
@@ -17,7 +16,6 @@ function isTrack(r, g, b) {
   return false;
 }
 
-const data = png.data;
 function onTrack(x, y) {
   const i = (Math.round(y) * width + Math.round(x)) << 2;
   return isTrack(data[i], data[i + 1], data[i + 2]);
@@ -40,7 +38,7 @@ const dots = WAYPOINTS.map(
 
 const svg = `<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}">
-  <image href="pocket_ring.png" width="${width}" height="${height}"/>
+  <image href="pocket_ring.webp" width="${width}" height="${height}"/>
   <path d="${d}" fill="none" stroke="#ff3366" stroke-width="10" opacity="0.85"/>
   ${dots}
 </svg>`;

@@ -1,17 +1,15 @@
 /**
- * Build & verify track waypoints against pocket_ring.png
+ * Build & verify track waypoints against pocket_ring.webp
  * Run: node scripts/buildTrackPath.mjs
  */
-import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { PNG } from "pngjs";
+import { loadRaster } from "./loadRaster.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const png = PNG.sync.read(
-  fs.readFileSync(path.join(__dirname, "../public/tracks/pocket_ring.png"))
+const { width, height, data } = await loadRaster(
+  path.join(__dirname, "../public/tracks/pocket_ring.webp")
 );
-const { width, height, data } = png;
 
 function isTrack(r, g, b) {
   if (g > 128 && b < 70) return false;

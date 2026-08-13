@@ -1,8 +1,8 @@
 .panel {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  min-height: 0;
+  flex: 1;
+  min-height: 120px;
   background: #0d1117;
   border: 1px solid #30363d;
   border-radius: 2px;
@@ -20,6 +20,19 @@
   font-weight: 600;
   flex-shrink: 0;
   border-bottom: 1px solid #21262d;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.viewerCount {
+  color: #3fb950;
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
 .list {
@@ -59,6 +72,15 @@
 
 .line:last-child .text {
   color: #e6edf3;
+}
+
+.spectator .text {
+  color: #8b949e;
+  font-size: 0.68rem;
+}
+
+.line:not(.spectator) .text {
+  color: #c9d1d9;
 }
 
 .gif {

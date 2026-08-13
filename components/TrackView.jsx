@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { getDriverById } from "@/lib/drivers";
-import { getTrack, DEFAULT_TRACK_ID } from "@/lib/tracks";
+import { getTrack, DEFAULT_TRACK_ID, getTrackCarSize } from "@/lib/tracks";
 import { getTrackRuntime } from "@/lib/trackPath";
 import styles from "./TrackView.module.css";
 
@@ -19,12 +19,13 @@ export default function TrackView({
   drivers,
   trackId = DEFAULT_TRACK_ID,
   showBackground = true,
-  carSize = 130,
+  carSize: carSizeProp,
   debugPath,
 }) {
   const track = getTrack(trackId);
   const runtime = getTrackRuntime(track);
   const { width, height } = track.viewBox;
+  const carSize = carSizeProp ?? getTrackCarSize(track);
   const half = carSize / 2;
   const [showDebug, setShowDebug] = useState(false);
 

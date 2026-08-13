@@ -359,7 +359,6 @@ export default function StartSequence() {
                     position: getGridProgress(i),
                     lap: 0,
                   }))}
-                  carSize={150}
                 />
               )}
               {step === "tires" && (

@@ -19,6 +19,16 @@
 }
 
 .leftCol {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.rightCol {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.leftCol {
   display: flex;
   flex-direction: column;
   min-height: 0;
@@ -473,18 +483,72 @@
   color: #e6edf3;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 768px) {
   .main {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .rightCol {
+    order: 1;
+    flex: 1;
+    min-height: 0;
+    grid-template-rows: 1fr auto;
   }
 
   .leftCol {
+    order: 2;
+    max-height: none;
+    flex-shrink: 0;
+  }
+
+  .trackPanel {
+    min-height: 36vh;
+  }
+
+  .leftScroll {
     max-height: 38vh;
   }
 
+  .playerRow {
+    padding: 0.5rem;
+  }
+
+  .tireBtn {
+    min-width: 52px;
+    padding: 0.35rem 0.45rem;
+  }
+
+  .tireHint {
+    display: none;
+  }
+
+  .lights {
+    gap: 0.5rem;
+    padding: 0.65rem 0.85rem;
+  }
+
   .light {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .goBtn {
+    width: 100%;
+    padding: 0.75rem 1rem;
+  }
+
+  .statusCenter {
+    display: none;
+  }
+
+  .phaseTag {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .main {
+    grid-template-columns: minmax(280px, 42%) 1fr;
   }
 }

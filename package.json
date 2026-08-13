@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "convert-webp": "node scripts/convertToWebp.mjs",
     "trace-track": "node scripts/traceTrack.mjs",
     "build-track": "node scripts/buildTrackPath.mjs"
   },
@@ -17,6 +18,7 @@
   },
   "devDependencies": {
     "eslint": "^9",
-    "eslint-config-next": "16.3.0"
+    "eslint-config-next": "16.3.0",
+    "sharp": "^0.34.5"
   }
 }

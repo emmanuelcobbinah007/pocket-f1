@@ -17,3 +17,12 @@
   height: auto;
   display: block;
 }
+
+@media (max-width: 768px) {
+  .wrap {
+    width: 100px;
+    bottom: 4.5rem;
+    right: 0.5rem;
+    border-width: 2px;
+  }
+}
