@@ -89,7 +89,7 @@ function gameReducer(state, action) {
     case "TOGGLE_SOUND":
       return toggleSound(state);
     case "RESET":
-      return resetToLobby();
+      return resetToLobby(state);
     default:
       return state;
   }

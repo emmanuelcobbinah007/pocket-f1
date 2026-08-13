@@ -514,20 +514,41 @@ details[open] > .foldSummary::before {
 
   .lbScroll {
     max-height: none;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .leaderboard {
     font-size: 0.72rem;
+    min-width: 100%;
+    width: max-content;
+  }
+
+  .leaderboard th,
+  .leaderboard td {
+    white-space: nowrap;
+  }
+
+  .colGap {
+    min-width: 3.25rem;
+  }
+
+  .colTire {
+    min-width: 2rem;
+    text-align: center;
+  }
+
+  .colWear {
+    min-width: 2.75rem;
+    text-align: right;
   }
 
   .driverName {
     display: none;
   }
 
-  .colWear,
-  .leaderboard th.colWear,
-  .leaderboard td.colWear {
-    display: none;
+  .driverCell {
+    min-width: 4.5rem;
   }
 
   .statusBar {
